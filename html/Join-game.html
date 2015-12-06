@@ -18,53 +18,43 @@
 
 <div class="container">
     <div class="form-signin">
-        <h1>Velkomen til Snake</h1>
+        <h1>Join game</h1>
         <div class="panel panel-default">
             <!-- Default panel contents -->
-            <div class="panel-heading">Panel heading</div>
 
-            <table class="table" style="width:100%">
+            <table class="table" id="joinGameTable" style="width:100%">
 
                 <tr>
-                    <td>Jill</td>
-                    <td>Smith</td>
-                    <td>50</td>
-                </tr>
-                <tr>
-                    <td>Eve</td>
-                    <td>Jackson</td>
-                    <td>94</td>
-                </tr>
-                <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>80</td>
+                    <th>id</th>
+                    <th>host</th>
+                    <th>name</th>
+                    <th>mapSize</th>
+                    <th>created</th>
                 </tr>
 
             </table>
         </div>
 
-        <input type="text" id="opponent" class="form-control" name="opponent" placeholder="opponent name" />
-        <input type="text" id="controls" class="form-control" name="controls" placeholder="controls" />
-        <input type="text" id="???" class="form-control" name="controls" placeholder="Game id" />
+        <input type="text" id="opponent" class="form-control" name="opponent" placeholder="opponent ID" />
+       <!-- <input type="text" id="controls" class="form-control" name="controls" placeholder="controls" /> -->
+        <input type="text" id="gameId" class="form-control" name="gameId" placeholder="Game id" />
 
-        <a href="????.html">
-            <button class="btn btn-lg btn-defualt btn-block" type="submit">
-                start game
-            </button>
-        </a>
+        <button class="btn btn-lg btn-defualt btn-block join-game" type="submit" >Join game</button>
 
 
 
         <a href="menu.html">
             <button class="btn btn-lg btn-defualt btn-block" type="submit">
-                back
+                Back
             </button>
         </a>
 
 
     </div>
 </div>
+
+<script type="text/javascript" src=" https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="../js/client.js"></script>
 
 </body>
 </html>
