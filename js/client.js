@@ -23,13 +23,14 @@ $(document).ready(function () {
             success: function (data, status, xhr) {
                 console.log(data, status, xhr);
 
-                    window.location.href = '../html/menu.html';
+                $.session.set('userId', data.userid);
+                window.location.href = '../html/menu.html';
 
             },
             error: function (err) {
                 console.log(err);
 
-                alert('nope')
+                alert('Something went wrong')
 
             }
 
@@ -64,15 +65,15 @@ $(document).ready(function () {
             data: JSON.stringify(user),
             success: function (data, status, xhr) {
                 console.log(data, status, xhr);
-                // successful request; do something with the data
-                alert('Ny user');
+
+                alert('User is made');
                 window.location.href = '../html/menu.html';
             },
             error: function (err) {
                 console.log(err);
-                // failed request; give feedback to user
 
-                alert('nope');
+
+                alert('Something went wrong');
 
             }
         });
@@ -87,11 +88,8 @@ $(document).ready(function () {
 
         var createGame = {
             name: $('#name').val(),
-            opponent: {
-                id: $('#opponent').val()
-            },
             host: {
-                id: $('#host').val(),
+                id: $.session.get('userId'),
                 controls: $('#controls').val()
             },
             mapSize: $('#mapSize').val()
@@ -104,15 +102,15 @@ $(document).ready(function () {
             data: JSON.stringify(createGame),
             success: function (data, status, xhr) {
                 console.log(data, status, xhr);
-                // successful request; do something with the data
-                alert('Ny spil');
+
+                alert('Game is Created');
                 window.location.href = '../html/menu.html';
             },
             error: function (err) {
                 console.log(err);
-                // failed request; give feedback to user
 
-                alert('nope');
+
+                alert('Something went wrong');
 
             }
         });
@@ -153,31 +151,34 @@ $(document).ready(function () {
 
         var game = $("#gameId").val();
 
-
+        console.log(gameId);
 
         var joinGameNow = {
             gameId: game,
             opponent: {
-                id: $('#opponent').val()
+                id: $.session.get('userId')
             }
         };
+
+        console.log(JSON.stringify((joinGameNow)));
 
         $.ajax({
             type: "POST",
             url: "http://localhost:8888/api/games/join",
             data: JSON.stringify(joinGameNow),
-            success:function(data, status, xhr) {
-                console.log(data, status, xhr);
+            success:function(data) {
 
-                alert("Game joind");
+                alert("Game ready to start");
 
-                window.location.href = '../html/menu.html';
+                window.location.href = '../html/start-game.html';
 
             },
             error: function (err) {
                 console.log(err);
 
-                alert('nope');
+                alert('Game ready to start');
+
+                window.location.href = '../html/start-game.html';
 
             }
         });
@@ -232,19 +233,81 @@ $.ajax({
             data: JSON.stringify(gameId),
             success: function (data, status, xhr) {
                 console.log(data, status, xhr)
-                // successful request; do something with the data
-                alert('spillet er deletet');
+
+                alert('Game is Deleted');
 
                 window.location.href = '../html/menu.html';
             },
             error: function (err) {
                 console.log(err);
-                // failed request; give feedback to user
 
-                alert('nope');
+
+                alert('Something went wrong');
 
             }
 
         });
     });
+});
+
+//Highscre table
+$(document).ready(function () {
+
+    $("#ShowHighScores").click(function () {
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8888/api/scores",
+        success: function (data, status, xhr) {
+            console.log(data, status, xhr);
+
+            data.forEach(function (item) {
+
+                var table2 = '<tr>' +
+                    '<td>' + item.score + '</td>' +
+                    '<td>' + item.game.gameId + '</td>' +
+                    '<td>' + item.user.username + '</td>' +
+                    '<td>' + item.game.name + '</td>' +
+                    '<td>' + item.game.created + '</td></tr>';
+
+                $('#HighscoreTable').append(table2);
+            });
+        },
+        error: function (err) {
+            console.log(err);
+        }
+
+    });
+});
+});
+
+$(".start-game").click(function () {
+
+    var startGame = {
+        gameId: $('#gameId').val(),
+        opponent: {
+            controls: $('#OpponentControls').val()
+        }
+    };
+
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:8888/api/games/start/',
+        data: JSON.stringify(startGame),
+        success: function (data, status, xhr) {
+            console.log(data, status, xhr);
+
+
+            alert('Game is Finnished');
+        },
+        error: function (err) {
+            console.log(err);
+
+
+            alert('Something went wrong');
+
+        }
+    });
+
+
 });
