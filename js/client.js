@@ -138,17 +138,12 @@ $(document).ready(function () {
     $(".join-game").click(function () {
 
         var game = $("#gameId").val();
-
-        console.log(gameId);
-
         var joinGameNow = {
             gameId: game,
             opponent: {
                 id: $.session.get('userId')
             }
         };
-        console.log(JSON.stringify((joinGameNow)));
-
         $.ajax({
             type: "POST",
             url: "http://localhost:8888/api/games/join",
