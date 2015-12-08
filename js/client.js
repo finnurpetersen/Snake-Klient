@@ -143,7 +143,9 @@ $(document).ready(function () {
         }
 
     });
+});
 
+$(document).ready(function () {
     //join games
 
 
@@ -175,10 +177,9 @@ $(document).ready(function () {
             },
             error: function (err) {
                 console.log(err);
-
                 alert('Game ready to start');
-
                 window.location.href = '../html/start-game.html';
+                $.session.set('gameId', game);
 
             }
         });
@@ -190,26 +191,25 @@ $(document).ready(function () {
 //Delete-game funktion
 $(document).ready(function () {
 
-    $(".YourGame").click(function () {
+    $(".See-game").click(function () {
 
-    var HostId = $("#HostId").val();
+        var gameId = $("#DeleteID").val();
 
 $.ajax({
     type: "GET",
-    url: "http://localhost:8888/api/games/host" + $("#HostId").val(),
+    url: "http://localhost:8888/api/games/pending/" +  $("#DeleteID").val(),
     success: function (data, status, xhr) {
         console.log(data, status, xhr);
 
         data.forEach(function (item) {
 
-            var table1 = '<tr>' +
+            var table2 = '<tr>' +
                 '<td>' + item.gameId + '</td>' +
-                '<td>' + item.status + '</td>' +
-                '<td>' + item.winner + '</td>' +
-                '<td>' + item.mapSize + '</td>' +
+                '<td>' + item.host.id + '</td>' +
+                '<td>' + item.name + '</td>' +
                 '<td>' + item.created + '</td></tr>';
 
-            $('#YourGameTable').append(table1);
+            $('#YourGameTable').append(table2);
         });
     },
     error: function (err) {
@@ -219,7 +219,7 @@ $.ajax({
 });
     });
 
-
+});
 
 
     $(".Delete-game").click(function () {
@@ -248,12 +248,9 @@ $.ajax({
 
         });
     });
-});
 
 //Highscre table
 $(document).ready(function () {
-
-    $("#ShowHighScores").click(function () {
 
     $.ajax({
         type: "GET",
@@ -265,10 +262,9 @@ $(document).ready(function () {
 
                 var table2 = '<tr>' +
                     '<td>' + item.score + '</td>' +
-                    '<td>' + item.game.gameId + '</td>' +
                     '<td>' + item.user.username + '</td>' +
                     '<td>' + item.game.name + '</td>' +
-                    '<td>' + item.game.created + '</td></tr>';
+                    '<td>' + item.game.gameId + '</td></tr>';
 
                 $('#HighscoreTable').append(table2);
             });
@@ -279,12 +275,13 @@ $(document).ready(function () {
 
     });
 });
-});
 
+
+$(document).ready(function () {
 $(".start-game").click(function () {
 
     var startGame = {
-        gameId: $('#gameId').val(),
+        gameId: $.session.get("gameId"),
         opponent: {
             controls: $('#OpponentControls').val()
         }
@@ -310,4 +307,5 @@ $(".start-game").click(function () {
     });
 
 
+});
 });
