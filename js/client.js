@@ -14,6 +14,7 @@ $(document).ready(function () {
         };
 //her bliver ajax indstillinger lavet
         $.ajax({
+            async: true,
             type: "post",
             url: "http://localhost:8888/api/login",
             data: JSON.stringify(data),
@@ -52,6 +53,7 @@ $(document).ready(function () {
         };
 //her bliver ajax indstillinger lavet
         $.ajax({
+            async: true,
             type: 'POST',
             url: 'http://localhost:8888/api/users',
             data: JSON.stringify(user),
@@ -87,6 +89,7 @@ $(document).ready(function () {
         };
 //her bliver ajax indstillinger lavet
         $.ajax({
+            async: true,
             type: 'POST',
             url: 'http://localhost:8888/api/games',
             data: JSON.stringify(createGame),
@@ -111,6 +114,7 @@ $(document).ready(function () {
 $(document).ready(function () {
 //her bliver ajax indstillinger lavet
     $.ajax({
+        async: true,
         type: "GET",
         url: "http://localhost:8888/api/games/open",
 //så sendes de indstillinger til serveren
@@ -150,6 +154,7 @@ $(document).ready(function () {
         };
 //her bliver ajax indstillinger lavet
         $.ajax({
+            async: true,
             type: "POST",
             url: "http://localhost:8888/api/games/join",
             data: JSON.stringify(joinGameNow),
@@ -179,7 +184,8 @@ $(document).ready(function () {
     $(".start-game").click(function () {
 //her laver man et objekt af det som brugeren taster ind
         var startGame = {
-//get metode som tager  id fra den som joined-game session set
+//get metode som tager den id fra den
+            //get metode som tager den id som er blevet logget ind fra session set
             gameId: $.session.get("gameId"),
             opponent: {
                 controls: $('#OpponentControls').val()
@@ -187,6 +193,7 @@ $(document).ready(function () {
         };
 //her bliver ajax indstillinger lavet
         $.ajax({
+            async: true,
             type: 'POST',
             url: 'http://localhost:8888/api/games/start/',
             data: JSON.stringify(startGame),
@@ -214,6 +221,7 @@ $(document).ready(function () {
         var gameId = $("#DeleteID").val();
 //her bliver ajax indstillinger lavet
         $.ajax({
+            async: true,
             type: "GET",
             url: "http://localhost:8888/api/games/pending/" +  $("#DeleteID").val(),
 //så sendes de indstillinger til serveren
@@ -246,6 +254,7 @@ $(document).ready(function () {
         var gameId = $("#gameId").val();
 //her bliver ajax indstillinger lavet
         $.ajax({
+            async: true,
             type: 'POST',
             url: 'http://localhost:8888/api/games/' + $("#gameId").val(),
             data: JSON.stringify(gameId),
@@ -270,6 +279,7 @@ $(document).ready(function () {
 $(document).ready(function () {
 //her bliver ajax indstillinger lavet
     $.ajax({
+        async: true,
         type: "GET",
         url: "http://localhost:8888/api/scores",
 //så sendes de indstillinger til serveren
