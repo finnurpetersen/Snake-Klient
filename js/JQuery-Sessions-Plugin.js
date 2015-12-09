@@ -1,3 +1,5 @@
+//en JS fil som gemmer på hvem er loget ind i Snake klienten
+//kilde https://github.com/AlexChittock/JQuery-Session-Plugin
 //Alex Chittock
 
 (function($){
