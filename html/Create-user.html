@@ -2,44 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
-
-
+    <title>Snake</title>
+    <!--Titelen i fanen bliver til “Snake”-->
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/login.css">
-
-
+    <!--Kalder på classer fra css til knapper og text felter-->
 </head>
 <body>
-
-
 
 <div class="container">
     <div class="form-signin">
         <h1>Create user</h1>
-        <input type="text" id="firstName" class="form-control" name="firstName" placeholder="first name" />
-        <input type="text" id="lastName" class="form-control" name="lastName" placeholder="Last name" />
-        <input type="text" id="username" class="form-control" name="username" placeholder="username" />
-        <input type="text" id="password" class="form-control" name="password" placeholder="Password" />
-        <input type="text" id="email" class="form-control" name="email" placeholder="CBS-Email Address" />
-
+        <!--Titel til menuen-->
+        <input type="text" id="firstName" class="form-control" placeholder="first name" />
+        <input type="text" id="lastName" class="form-control" placeholder="Last name" />
+        <input type="text" id="username" class="form-control" placeholder="username" />
+        <input type="text" id="password" class="form-control" placeholder="Password" />
+        <input type="text" id="email" class="form-control" placeholder="CBS-Email Address" />
         <button class="btn btn-lg btn-defualt btn-block create-user" type="submit" >Create user</button>
-
+        <!--Laver 5 text felter samt en "Create user" kanap -->
         <a href="Login.html">
             <button class="btn btn-lg btn-defualt btn-block" type="submit">
-                back
+                Back
             </button>
         </a>
-
+        <!--laver en "Back" knap som flytter brugeren til Menu.html-->
     </div>
-
-    <script type="text/javascript" src=" https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="../js/client.js"></script>
-    <script type="text/javascript" src="../js/JQuery-Sessions-Plugin.js"></script>
-
-
 </div>
 
-
+<script type="text/javascript" src=" https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="../js/client.js"></script>
+<script type="text/javascript" src="../js/JQuery-Sessions-Plugin.js"></script>
+<!--Kalder på id som bliver tastet ind i client.js-->
+<!--Kalder på Jquery fra https://code.jquery.com/jquery-2.1.4.min.js-->
 </body>
 </html>

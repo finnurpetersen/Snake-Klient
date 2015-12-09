@@ -2,40 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
-
+    <title>Snake</title>
+    <!--Titelen i fanen bliver til “Snake”-->
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/login.css">
-
-
+    <!--Kalder på classer fra css til knapper og text felter-->
 </head>
 <body>
-
-
 
 <div class="container">
     <div class="form-signin">
         <h1>Please sign in to snake</h1>
-        <input type="text" id="username" class="form-control" name="username" placeholder="Username" required="" autofocus="" />
-        <input type="password" id="password" class="form-control" name="password" placeholder="Password" required=""/>
-
+        <!--Titel til menuen-->
+        <input type="text" id="username" class="form-control" placeholder="Username" required="" autofocus="" />
+        <input type="password" id="password" class="form-control" placeholder="Password" required=""/>
         <button class="btn btn-lg btn-defualt btn-block login-button"  type="submit" >Sign in</button>
-
+        <!--Laver text felt og password felt samt en "Sign in" kanap -->
         <a href="Create-user.html">
             <button class="btn btn-lg btn-defualt btn-block" type="submit">
                 Create user
             </button>
         </a>
-
+        <!--laver en "Create user" knap som flytter brugeren til Create-user.html-->
     </div>
-
-
 </div>
-
 
 <script type="text/javascript" src=" https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="../js/client.js"></script>
 <script type="text/javascript" src="../js/JQuery-Sessions-Plugin.js"></script>
-
+<!--Kalder på id som bliver tastet ind i client.js-->
+<!--Kalder på Jquery fra https://code.jquery.com/jquery-2.1.4.min.js-->
 </body>
 </html>
