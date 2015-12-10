@@ -15,7 +15,7 @@ $(document).ready(function () {
 //her bliver ajax indstillinger lavet
         $.ajax({
             async: true,
-            type: "post",
+            type: "POST",
             url: "http://localhost:8888/api/login",
             data: JSON.stringify(data),
 //så sendes de indstillinger til serveren
